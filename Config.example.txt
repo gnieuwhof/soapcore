@@ -1,0 +1,31 @@
+
+	#REGION SoapGen
+	/**
+	 * @var string Name of the WebService
+	 */
+	const SERVICE_NAME = 'SOAP Service';
+
+	/**
+	 * @var string Name of the WSDL file
+	 * (can be left as is)
+	 */
+	const WSDL_FILE = 'definitions.wsdl';
+
+	/**
+	 * @var string URL of the WebService
+	 */
+	const SERVICE_LOCATION = 'http://localhost/soapbase/';
+
+	/**
+	 * @var string Name of the wrapper class
+	 * (can be left as is)
+	 */
+	const SOAP_WRAPPER_CLASS_NAME = 'SoapWrapper';
+
+	/**
+	 * @var string Location of the SOAP classes
+	 * (can be left as is)
+	 */
+	const SOAP_APPLICATION_DIR = 'application/';
+	#ENDREGION SoapGen
+	
