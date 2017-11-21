@@ -56,9 +56,9 @@ class Authenticator
     
     private function AuthenticateRequest()
     {
-        $timestamp = round( microtime( true ) * 1000 );
+        $timestamp = ( time() * 1000 );
         
-        if( abs( $timestamp - $this->authTimestamp ) > 60000 )
+        if( abs( $timestamp - $this->authTimestamp ) > 1000000 )
         {
             throw new SoapAuthenticationException(
                 'Timestamp offset too large.' );
