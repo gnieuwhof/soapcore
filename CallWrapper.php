@@ -28,14 +28,17 @@ class CallWrapper
     {
         try
         {
+            $authenticator = new Authenticator();
+            $authenticator->Authenticate( $method );
+            
             return call_user_func_array(
-                array( Config::SOAP_WRAPPER_CLASS_NAME, $method ),
+                array( 'SoapWrapper', $method ),
                 $args
                 );
         }
-        catch(SoapException $se)
+        catch( SoapException $se )
         {
-            FaultManager::ThrowSoapFault($se);
+            FaultManager::ThrowSoapFault( $se );
         }
     }
     
