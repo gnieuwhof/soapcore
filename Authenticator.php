@@ -34,13 +34,13 @@ class Authenticator
         {
             switch( strtolower( $name ) )
             {
-                case 'auth_timestamp':
+                case 'auth-timestamp':
                     $this->authTimestamp = $value;
                     break;
-                case 'auth_token_id':
+                case 'auth-token-id':
                     $this->authTokenId = $value;
                     break;
-                case 'auth_token':
+                case 'auth-token':
                     $this->authToken = strtolower( $value );
                     break;
             }
