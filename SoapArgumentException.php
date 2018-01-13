@@ -24,7 +24,7 @@ class SoapArgumentException extends SoapException
         // Remove $ from argument.
         $argument = ltrim( $argument, '$' );
         
-        if($exceptionType !== null)
+        if( $exceptionType !== null )
         {
             $this->exceptionType = $exceptionType;
         }
