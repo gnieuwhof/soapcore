@@ -24,6 +24,8 @@ class Authenticator
         
         $this->ProcessHeaders();
         
+        $this->CheckTokenId();
+        
         $this->AuthenticateRequest();
     }
     
@@ -52,6 +54,32 @@ class Authenticator
             throw new SoapAuthenticationException( 'No token ID header found.' );
         if( !isset( $this->authToken ) )
             throw new SoapAuthenticationException( 'No token header found.' );
+    }
+    
+    private function CheckTokenId()
+    {
+        $epoch = new DateTime("1970-01-01");
+        $now = new DateTime();
+        
+        $days = $now->diff($epoch, true)->format("%a");
+        
+        $id = $this->authTokenId;
+        $rId = $id - 50000;
+
+        $minDays = ($days - 1);
+        $maxDays = ($days + 1);
+        
+        if(($rId >= $minDays) && ($rId <= $maxDays))
+        {
+            return;
+        }
+        
+        if(($id >= $minDays) && ($id <= $maxDays))
+        {
+            return;
+        }
+        
+        throw new SoapAuthenticationException( "Invalid token ID (expected $days or " . ($days + 50000) . ")." );
     }
     
     private function AuthenticateRequest()
